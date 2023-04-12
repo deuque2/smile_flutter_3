@@ -1,0 +1,53 @@
+group 'com.smileidentity.smile_flutter'
+version '0.0.6'
+
+buildscript {
+    ext.kotlin_version = '1.7.21'
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots/'
+        }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots/'
+        }
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 32
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+    defaultConfig {
+        minSdkVersion 16
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.smileidentity:smile-id-ui:1.0.6"
+    implementation 'com.smileidentity:smile-id-sdk:7.3.22'
+    implementation 'com.smileidentity:netjava:1.0.3'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.hbb20:ccp:2.6.1'
+}
